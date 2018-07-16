@@ -2,10 +2,10 @@
 
 @{
     ViewData["Title"] = "Details";
+    BadgeType type = (BadgeType)Model.Type;
 }
 
 <h2>Details</h2>
-
 <div>
     <h4>Badge</h4>
     <hr />
@@ -20,7 +20,7 @@
             @Html.DisplayNameFor(model => model.Type)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Type)
+            @Html.DisplayFor(model => type)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Description)

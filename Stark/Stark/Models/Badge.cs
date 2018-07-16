@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Stark.Models
@@ -14,7 +15,7 @@ namespace Stark.Models
         public string Title { get; set; }
         public int Type { get; set; }
         public string Description { get; set; }
-
+        [JsonIgnore]
         public ICollection<Review> Review { get; set; }
     }
     public enum BadgeType
