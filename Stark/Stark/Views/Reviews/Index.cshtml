@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Badge)
             </th>
+			  <th>
+                @Html.DisplayNameFor(model => model.Badge.Type)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Licence)
             </th>
@@ -29,6 +32,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+var type = (BadgeType)item.Badge.Type;
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.CreateDate)
@@ -38,6 +42,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Badge.Title)
+            </td>
+			<td>
+                @Html.DisplayFor(modelItem => type)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Licence.Plate)

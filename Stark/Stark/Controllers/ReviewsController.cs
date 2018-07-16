@@ -48,7 +48,8 @@ namespace Stark.Controllers
         // GET: Reviews/Create
         public IActionResult Create()
         {
-            ViewData["BadgeId"] = new SelectList(_context.Badge, "BadgeId", "Title");
+            var badges = _context.Badge.Select(m => new { Text = m.Title + " -- " + (BadgeType)Enum.ToObject(typeof(BadgeType), m.Type) + " -- " + m.Description, Value = m.BadgeId }).ToList();
+            ViewData["BadgeId"] = new SelectList(badges, "Value", "Text");
             ViewData["LicenceId"] = new SelectList(_context.Cars, "LicenceId", "Plate");
             return View();
         }
@@ -60,6 +61,7 @@ namespace Stark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ReviewId,LicenceId,BadgeId,CreateDate,UserIp")] Review review)
         {
+            var badges = _context.Badge.Select(m => new { Text = m.Title + " -- " + (BadgeType)Enum.ToObject(typeof(BadgeType), m.Type) + " -- " + m.Description, Value = m.BadgeId }).ToList();
             string userip = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(0).ToString();
             if (ModelState.IsValid)
             {
@@ -68,7 +70,7 @@ namespace Stark.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["UserIP"] = new SelectList(_context.Review, "UserIP",  userip);
-            ViewData["BadgeId"] = new SelectList(_context.Badge, "BadgeId", "Title", review.BadgeId);
+            ViewData["BadgeId"] = new SelectList(badges, "Value", "Text");
             ViewData["LicenceId"] = new SelectList(_context.Cars, "LicenceId", "Plate", review.LicenceId);
             return View(review);
         }
@@ -80,13 +82,13 @@ namespace Stark.Controllers
             {
                 return NotFound();
             }
-
+            var badges = _context.Badge.Select(m => new { Text = m.Title + " -- " + (BadgeType)Enum.ToObject(typeof(BadgeType), m.Type) + " -- " + m.Description, Value = m.BadgeId }).ToList();
             var review = await _context.Review.FindAsync(id);
             if (review == null)
             {
                 return NotFound();
             }
-            ViewData["BadgeId"] = new SelectList(_context.Badge, "BadgeId", "Title", review.BadgeId);
+            ViewData["BadgeId"] = new SelectList(badges, "Value", "Text");
             ViewData["LicenceId"] = new SelectList(_context.Cars, "LicenceId", "Plate", review.LicenceId);
             return View(review);
         }
@@ -123,7 +125,8 @@ namespace Stark.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BadgeId"] = new SelectList(_context.Badge, "BadgeId", "Title", review.BadgeId);
+            var badges = _context.Badge.Select(m => new { Text = m.Title + " -- " + (BadgeType)Enum.ToObject(typeof(BadgeType), m.Type) + " -- " + m.Description, Value = m.BadgeId }).ToList();
+            ViewData["BadgeId"] = new SelectList(badges, "Value", "Text");
             ViewData["LicenceId"] = new SelectList(_context.Cars, "LicenceId", "Plate", review.LicenceId);
             return View(review);
         }
