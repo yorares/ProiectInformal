@@ -17,4 +17,10 @@ namespace Stark.Models
 
         public ICollection<Review> Review { get; set; }
     }
+    public enum BadgeType
+    {
+        Bad = -1,
+        Neutral = 0,
+        Good =1
+    }
 }
