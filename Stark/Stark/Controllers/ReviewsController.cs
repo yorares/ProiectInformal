@@ -11,6 +11,7 @@ namespace Stark.Controllers
 {
     public class ReviewsController : Controller
     {
+
         private readonly starkContext _context;
 
         public ReviewsController(starkContext context)
@@ -62,14 +63,15 @@ namespace Stark.Controllers
         public async Task<IActionResult> Create([Bind("ReviewId,LicenceId,BadgeId,CreateDate,UserIp")] Review review)
         {
             var badges = _context.Badge.Select(m => new { Text = m.Title + " -- " + (BadgeType)Enum.ToObject(typeof(BadgeType), m.Type) + " -- " + m.Description, Value = m.BadgeId }).ToList();
-            string userip = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(0).ToString();
+            string userip = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(1).ToString();
+            review.UserIp = userip;
+            review.CreateDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 _context.Add(review);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserIP"] = new SelectList(_context.Review, "UserIP",  userip);
             ViewData["BadgeId"] = new SelectList(badges, "Value", "Text");
             ViewData["LicenceId"] = new SelectList(_context.Cars, "LicenceId", "Plate", review.LicenceId);
             return View(review);
