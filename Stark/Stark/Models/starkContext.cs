@@ -64,7 +64,7 @@ namespace Stark.Models
 
                 entity.Property(e => e.CreateDate)
                     .HasColumnType("date")
-                    .HasDefaultValueSql("(getdate())");
+                    .HasDefaultValueSql("(CURRENT_TIMESTAMP)");
 
                 entity.Property(e => e.UserIp)
                     .IsRequired()

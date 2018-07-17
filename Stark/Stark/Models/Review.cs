@@ -12,15 +12,10 @@ namespace Stark.Models
         public DateTime CreateDate { get; set; }
         public string UserIp
         {
-            get
-            {
-                return userip;
-            }
-            set
-            {
-                userip = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName()).AddressList.GetValue(0).ToString();
-            }
+            get { return userip; }
+            set { userip = value; }
         }
+
 
         public Badge Badge { get; set; }
         public Cars Licence { get; set; }
