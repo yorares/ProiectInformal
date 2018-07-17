@@ -137,4 +137,3 @@ C:\Users\noIMEnoPSP\source\repos\Stark\Stark\obj\Debug\netcoreapp2.1\Stark.Views
 C:\Users\noIMEnoPSP\source\repos\Stark\Stark\obj\Debug\netcoreapp2.1\Stark.dll
 C:\Users\noIMEnoPSP\source\repos\Stark\Stark\obj\Debug\netcoreapp2.1\Stark.pdb
 C:\Users\noIMEnoPSP\source\repos\Stark\Stark\obj\Debug\netcoreapp2.1\Stark.csproj.CopyComplete
-C:\Users\noIMEnoPSP\source\repos\Stark\Stark\obj\Debug\netcoreapp2.1\Stark.csprojAssemblyReference.cache

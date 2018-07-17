@@ -152,7 +152,7 @@ Write(Html.DisplayNameFor(model => model.Review));
             WriteLiteral("    </table>\r\n</dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(1176, 61, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "27fd980a2c6041a596a60086c337563a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "55eebdbfbe3e411394afef6ccc149807", async() => {
                 BeginContext(1229, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -187,7 +187,7 @@ Write(Html.DisplayNameFor(model => model.Review));
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(1245, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cef07bd8e0e1470fa9e0bd1d30dd46ec", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2eff8e624a1b4b88982e06122893fa5a", async() => {
                 BeginContext(1267, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();
