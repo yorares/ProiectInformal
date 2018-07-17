@@ -123,7 +123,7 @@ namespace Stark.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReviewId,LicenceId,BadgeId,CreateDate,UserIp")] Review review)
+        public async Task<IActionResult> Edit(int id, [Bind("ReviewId,LicenceId,BadgeId, CreateDate,UserIp")] Review review)
         {
             if (id != review.ReviewId)
             {
