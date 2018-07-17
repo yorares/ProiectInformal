@@ -33,7 +33,10 @@ namespace Stark.Controllers
             }
 
             var cars = await _context.Cars
-                .FirstOrDefaultAsync(m => m.LicenceId == id);
+                .Include(s=>s.Review)
+                .ThenInclude(e=>e.Badge)
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.LicenceId == id);
             if (cars == null)
             {
                 return NotFound();
