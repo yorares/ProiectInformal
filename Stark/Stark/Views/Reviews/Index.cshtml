@@ -9,17 +9,20 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<form asp-controller="Reviews" asp-action="Index">
-    <p>
-        Search: <input type="text" name="SearchString">
-        <input type="submit" value="Filter" />
-    </p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Filter by keyword: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
 </form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Licence)
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Licence)</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserIp)
@@ -31,7 +34,7 @@
                 @Html.DisplayNameFor(model => model.Badge.Type)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.CreateDate)</a>
             </th>
             <th></th>
         </tr>

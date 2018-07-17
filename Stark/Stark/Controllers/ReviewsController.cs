@@ -20,14 +20,31 @@ namespace Stark.Controllers
         }
 
         // GET: Reviews
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string sortOrder,string searchString)
         {
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "plate_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewData["CurrentFilter"] = searchString;
             IQueryable<Review> starkContext = _context.Review.Include(r => r.Badge).Include(r => r.Licence);
             if (!String.IsNullOrEmpty(searchString))
             {
                 starkContext =_context.Review.Include(r => r.Badge).Include(r => r.Licence).Where(r => r.Licence.Plate.Contains(searchString.Trim())||r.Badge.Title.Contains(searchString.Trim())||r.UserIp.Contains(searchString.Trim()));
             }
-                       
+            switch (sortOrder)
+            {
+                case "plate_desc":
+                    starkContext = starkContext.OrderByDescending(s => s.Licence.Plate);
+                    break;
+                case "Date":
+                    starkContext = starkContext.OrderBy(s => s.CreateDate);
+                    break;
+                case "date_desc":
+                    starkContext = starkContext.OrderByDescending(s => s.CreateDate);
+                    break;
+                default:
+                    starkContext = starkContext.OrderBy(s => s.CreateDate);
+                    break;
+            }
             return View(await starkContext.ToListAsync());
             
         }
