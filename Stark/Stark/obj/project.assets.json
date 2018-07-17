@@ -12226,23 +12226,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\noIMEnoPSP\\.nuget\\packages\\": {},
+    "C:\\Users\\nemo\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\noIMEnoPSP\\source\\repos\\Stark\\Stark\\Stark.csproj",
+      "projectUniqueName": "C:\\Users\\nemo\\Documents\\GitHub\\ProiectInformal\\Stark\\Stark\\Stark.csproj",
       "projectName": "Stark",
-      "projectPath": "C:\\Users\\noIMEnoPSP\\source\\repos\\Stark\\Stark\\Stark.csproj",
-      "packagesPath": "C:\\Users\\noIMEnoPSP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\noIMEnoPSP\\source\\repos\\Stark\\Stark\\obj\\",
+      "projectPath": "C:\\Users\\nemo\\Documents\\GitHub\\ProiectInformal\\Stark\\Stark\\Stark.csproj",
+      "packagesPath": "C:\\Users\\nemo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nemo\\Documents\\GitHub\\ProiectInformal\\Stark\\Stark\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\noIMEnoPSP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nemo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
