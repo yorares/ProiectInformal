@@ -9,11 +9,17 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<form asp-controller="Reviews" asp-action="Index">
+    <p>
+        Search Plates: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
+                @Html.DisplayNameFor(model => model.Licence)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UserIp)
@@ -25,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.Badge.Type)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Licence)
+                @Html.DisplayNameFor(model => model.CreateDate)
             </th>
             <th></th>
         </tr>
@@ -35,7 +41,7 @@
 var type = (BadgeType)item.Badge.Type;
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
+                @Html.DisplayFor(modelItem => item.Licence.Plate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UserIp)
@@ -47,7 +53,7 @@ var type = (BadgeType)item.Badge.Type;
                 @Html.DisplayFor(modelItem => type)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Licence.Plate)
+                @Html.DisplayFor(modelItem => item.CreateDate)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ReviewId">Edit</a> |

@@ -20,10 +20,15 @@ namespace Stark.Controllers
         }
 
         // GET: Reviews
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var starkContext = _context.Review.Include(r => r.Badge).Include(r => r.Licence);
-            return View(await starkContext.ToListAsync());
+            IQueryable<Review> starkContext = _context.Review.Include(r => r.Badge).Include(r => r.Licence);
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                starkContext =_context.Review.Include(r => r.Badge).Include(r => r.Licence).Where(r => r.Licence.Plate.Contains(searchString));
+            }
+                return View(await starkContext.ToListAsync());
+            
         }
 
         // GET: Reviews/Details/5
