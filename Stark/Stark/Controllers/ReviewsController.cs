@@ -25,9 +25,10 @@ namespace Stark.Controllers
             IQueryable<Review> starkContext = _context.Review.Include(r => r.Badge).Include(r => r.Licence);
             if (!String.IsNullOrEmpty(searchString))
             {
-                starkContext =_context.Review.Include(r => r.Badge).Include(r => r.Licence).Where(r => r.Licence.Plate.Contains(searchString));
+                starkContext =_context.Review.Include(r => r.Badge).Include(r => r.Licence).Where(r => r.Licence.Plate.Contains(searchString.Trim())||r.Badge.Title.Contains(searchString.Trim())||r.UserIp.Contains(searchString.Trim()));
             }
-                return View(await starkContext.ToListAsync());
+                       
+            return View(await starkContext.ToListAsync());
             
         }
 

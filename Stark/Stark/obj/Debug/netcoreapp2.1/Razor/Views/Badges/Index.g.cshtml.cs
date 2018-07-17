@@ -66,7 +66,7 @@ using Stark.Models;
             WriteLiteral("\r\n<h2>Index</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(112, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e56bba393b4940aa8cfed0343d539cbf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a1f4b088b48744bea79d670395204c05", async() => {
                 BeginContext(135, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -157,7 +157,7 @@ using Stark.Models;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(974, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4b4c2b384a8248ccb707d1ed6ebad664", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6af544c556e94a9bb11c5ccfd862f36f", async() => {
                 BeginContext(1024, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -192,7 +192,7 @@ using Stark.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(1052, 64, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4dad78333ba4147ba36e2fd14a4f68a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "30eea240a26f45e68942bdd56a50ce77", async() => {
                 BeginContext(1105, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -227,7 +227,7 @@ using Stark.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(1136, 62, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b41959c491e4d2e9650f3710d423523", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "923af7926ded4954bd575695c0f4ae59", async() => {
                 BeginContext(1188, 6, true);
                 WriteLiteral("Delete");
                 EndContext();
