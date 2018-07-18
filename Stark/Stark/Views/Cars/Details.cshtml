@@ -16,6 +16,37 @@
         <dd>
             @Html.DisplayFor(model => model.Plate)
         </dd>
+		<dt>
+    @Html.DisplayNameFor(model => model.Review)
+</dt>
+<dd>
+    <table class="table">
+        <tr>
+            <th>Badges</th>
+            <th>Type</th>
+			 <th>Reviewer IP</th>
+			  <th>Added</th>
+        </tr>
+        @foreach (var item in Model.Review)
+        {
+		 BadgeType type = (BadgeType)item.Badge.Type;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Badge.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => type)
+                </td>
+				<td>
+                    @Html.DisplayFor(modelItem => item.UserIp)
+                </td>
+				<td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+            </tr>
+        }
+    </table>
+</dd>
     </dl>
 </div>
 <div>

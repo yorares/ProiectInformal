@@ -28,7 +28,7 @@ namespace Stark.Controllers
             IQueryable<Review> starkContext = _context.Review.Include(r => r.Badge).Include(r => r.Licence);
             if (!String.IsNullOrEmpty(searchString))
             {
-                starkContext =_context.Review.Include(r => r.Badge).Include(r => r.Licence).Where(r => r.Licence.Plate.Contains(searchString.Trim())||r.Badge.Title.Contains(searchString.Trim())||r.UserIp.Contains(searchString.Trim()));
+                starkContext =_context.Review.Include(r => r.Badge).Include(r => r.Licence).Where(r => r.Licence.Plate.Contains(searchString.Trim())||r.Badge.Title.Contains(searchString.Trim())||r.UserIp.Contains(searchString.Trim())||((BadgeType)r.Badge.Type).ToString().Contains(searchString.Trim()));
             }
             switch (sortOrder)
             {
@@ -123,7 +123,7 @@ namespace Stark.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReviewId,LicenceId,BadgeId,CreateDate,UserIp")] Review review)
+        public async Task<IActionResult> Edit(int id, [Bind("ReviewId,LicenceId,BadgeId, CreateDate,UserIp")] Review review)
         {
             if (id != review.ReviewId)
             {
