@@ -50,32 +50,6 @@ namespace Stark.Controllers
 
             return View(cars);
         }
-        [HttpPost]
-        public async Task<IActionResult> CarPlate(IFormFile file)
-        {
-            // full path to file in temp location
-            var imageFilePath = Path.GetTempFileName();
-
-            string requestParameters = "language=unk&detectOrientation=true";
-
-            // Assemble the URI for the REST API Call.
-            string uri = uriBase + "?" + requestParameters;
-
-            string result = null;
-
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-
-                HttpContent content = new StreamContent(file.OpenReadStream());
-                content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-
-                var response = await client.PostAsync(uri, content);
-                result = await response.Content.ReadAsStringAsync();
-            }
-
-            return Ok(result);
-        }
 
         // GET: Cars/Create
         public IActionResult Create()
@@ -93,7 +67,14 @@ namespace Stark.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(cars);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("Create","Reviews");
+                }
                 return RedirectToAction(nameof(Index));
             }
             return View(cars);
@@ -114,6 +95,7 @@ namespace Stark.Controllers
             }
             return View(cars);
         }
+        
 
         // POST: Cars/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
