@@ -69,7 +69,7 @@ using Stark.Models;
             WriteLiteral("\r\n\r\n<h2>Upload</h2>\r\n\r\n<h4>Cars</h4>\r\n<hr />\r\n<div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n            ");
             EndContext();
             BeginContext(147, 590, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f18de05f54ba40e594646b7ea7685e1c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "640e01d29c51400a9623c8e1e6c3b6ba", async() => {
                 BeginContext(241, 489, true);
                 WriteLiteral(@"
                 <div class=""form-group"">
@@ -110,7 +110,7 @@ using Stark.Models;
             WriteLiteral("\r\n    </div>\r\n</div>\r\n\r\n<div>\r\n    ");
             EndContext();
             BeginContext(772, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5d8f88e044254a4d8cbafb17ebaaf689", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "de1fe0f032f646ec8e1b7ec195a733d0", async() => {
                 BeginContext(794, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();

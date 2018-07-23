@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "SelectPlate";
-    int[] ceva = new int[2] { 0, 2 };
+    string[] ceva = new string[2] { "CJ25PUL","SJ24RUN" };
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <form asp-action="Create">
@@ -15,11 +15,11 @@
             for (int i = 0; i < ceva.GetLength(0); i++)
             {
 
-                <input type="button" id=@i value=@ceva[i] />
+                <input type="button" class="selectButtonBefore" id=@i value=@ceva[i]  />
             }
         }
         <label asp-for="Plate" class="control-label"></label>
-        <input asp-for="Plate" class="form-control" id="Plate" />
+        <input asp-for="Plate" hidden />
         <span asp-validation-for="Plate" class="text-danger"></span>
     </div>
     <div class="form-group">
