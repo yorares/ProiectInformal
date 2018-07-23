@@ -19,34 +19,33 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+            <div class="dropdown" style="float:left;">
+                <button class="dropbtn"><img src="~/images/stark.png" height="20px" width="40px"/></button>
+                <div class="dropdown-content" style="left:0;">
+                    <a asp-area="" asp-controller="Reviews" asp-action="Index">Review</a>
+                    <a asp-area="" asp-controller="Upload" asp-action="Index">Upload</a>
+                    <a asp-area="" asp-controller="Reports" asp-action="Index">Reports</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index">About</a>
+                </div>
+            </div>
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Home</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Reviews" asp-action="Index">Review</a></li>
-                    <li><a asp-area="" asp-controller="Badges" asp-action="Index">Badge</a></li>
-                    <li><a asp-area="" asp-controller="Cars" asp-action="Index">Cars</a></li>
-					<li><a asp-area="" asp-controller="Cars" asp-action="Create">Upload</a></li>
-                </ul>
+                </button>           
             </div>
         </div>
     </nav>
+   
+
 
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; 2018 - Stark</p>
-        </footer>
     </div>
 
     <environment include="Development">

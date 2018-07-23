@@ -15,9 +15,7 @@ namespace Stark.Controllers
 {
     public class CarsController : Controller
     {
-        const string subscriptionKey = "d4b7a03ef9e7478a9170b49484e277f5";
-        const string uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr";
-        private readonly starkContext _context;
+       private readonly starkContext _context;
 
         public CarsController(starkContext context)
         {
@@ -37,17 +35,26 @@ namespace Stark.Controllers
             {
                 return NotFound();
             }
+            //the following anon type references hold the number of each type of review for this (id) Plate
+            var awful = _context.Review.Count(s => s.Badge.Type == 0 && s.LicenceId == id);
+            var bad = _context.Review.Count(s => s.Badge.Type == 1 && s.LicenceId == id);
+            var good = _context.Review.Count(s => s.Badge.Type == 3 && s.LicenceId == id);
+            var excellent = _context.Review.Count(s => s.Badge.Type == 4 && s.LicenceId == id);
 
-            var cars = await _context.Cars
-                .Include(s=>s.Review)
+            //for reading from Cars and related data using LINQ query to include related objects
+            var cars = await _context.Cars 
+                .Include(s=>s.Review) //
                 .ThenInclude(e=>e.Badge)
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.LicenceId == id);
+                .AsNoTracking() //performance
+                .SingleOrDefaultAsync(m => m.LicenceId == id); 
             if (cars == null)
             {
                 return NotFound();
             }
-
+            ViewData["awful"] = awful.ToString();
+            ViewData["bad"] = bad.ToString();
+            ViewData["good"] = good.ToString();
+            ViewData["excellent"] = excellent.ToString();
             return View(cars);
         }
 
@@ -71,13 +78,13 @@ namespace Stark.Controllers
                 {
                     await _context.SaveChangesAsync();
                 }
-                catch (Exception)
+                catch (Exception) //improvised way to make sure only one record of a particular plate exists
                 {
-                    return RedirectToAction("Create","Reviews");
+                    return RedirectToAction("CreateExists","Reviews", new { sequence = cars.Plate }); //redirects to the Create Review View for when the plate already exists in the db
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("CreateNew", "Reviews", new { id = cars.LicenceId }); //redirects to the Create Review View for when the plate does not yet exists in the db
             }
-            return View(cars);
+            return RedirectToAction("Index", "Upload", new { saveChangesError = true }); //only called when the user does not select a plate in the view  - redirects to the Upload View so they can try again
         }
 
         // GET: Cars/Edit/5
@@ -133,7 +140,7 @@ namespace Stark.Controllers
         }
 
         // GET: Cars/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false) //saveChangesError is passed by redirect from the POST Delete if exception is caught - Used to prompt the user in the view.
         {
             if (id == null)
             {
@@ -141,10 +148,16 @@ namespace Stark.Controllers
             }
 
             var cars = await _context.Cars
-                .FirstOrDefaultAsync(m => m.LicenceId == id);
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.LicenceId == id);
             if (cars == null)
             {
                 return NotFound();
+            }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] =
+                    "Delete failed. Please consider referential integrity when deleting records that contain foreign key constraints.";
             }
 
             return View(cars);
@@ -155,10 +168,23 @@ namespace Stark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var cars = await _context.Cars.FindAsync(id);
-            _context.Cars.Remove(cars);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var cars = await _context.Cars
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m =>m.LicenceId==id);
+            if (cars == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            try
+            {
+                _context.Cars.Remove(cars);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateException) //usually when deleting a record that triggers foreign key constraints
+            {
+                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
+            }
         }
 
         private bool CarsExists(int id)

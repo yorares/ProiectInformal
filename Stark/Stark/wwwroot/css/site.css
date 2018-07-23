@@ -35,10 +35,85 @@ body {
         display: none;
     }
 }
+.reviewIcons{
+    position:relative;
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/*nou*/
+
+.input-file-container {
+    position: relative;
+    width: 225px;
+    left:150%;
+}
+
+.js .input-file-trigger {
+    display: block;
+    padding: 14px 45px;
+    background: #449d44;
+    color: #fff;
+    font-size: 1em;
+    transition: all .4s;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.js .input-file {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 225px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+}
+
+    .js .input-file:hover + .input-file-trigger,
+    .js .input-file:focus + .input-file-trigger,
+    .js .input-file-trigger:hover,
+    .js .input-file-trigger:focus {
+        background: #34495E;
+        color: #39D2B4;
+    }
+
+.file-return {
+    position:relative;
+    margin: 0;
+    left: 150%;
+}
+
+    .file-return:not(:empty) {
+        margin: 1em 0;
+    }
+
+.js .file-return {
+    font-style: italic;
+    font-size: .9em;
+    font-weight: bold;
+}
+
+    .js .file-return:not(:empty):before {
+        content: "Selected file: ";
+        font-style: normal;
+        font-weight: normal;
+    }
+
+#uploadBtn {
+    background: #39D2B4;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
 .selectButtonBefore {
     border: none;
-    background-color: cornflowerblue;
+    background-color: #333;
     border-radius: 15px;
+    color:white;
     margin-top: 30px;
     font-size: 30px;
     outline: none;
@@ -47,4 +122,77 @@ body {
 .selectButton {
     color: white;
     background-color: forestgreen;
+}
+.uploadButton{
+    position:relative;
+    left:135%;
+}
+#Plate{
+    display:none;
+}
+.selectPlate{
+    position:relative;
+    text-align:center;
+}
+#selectList{
+    display:none;
+}
+#showLicence{
+    font-size:30px;
+}
+.allCreateExisting{
+    position:relative;
+    text-align:center;
+
+}
+
+/* nou nou*/
+.dropbtn {
+    background-color: #449d44;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.ErrorMessage{
+    left:35%;
+    position:relative;
+    margin-top:20px;
+    font-size:large;
 }

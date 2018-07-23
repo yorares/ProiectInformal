@@ -4,21 +4,30 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+
+<h2>
+    <dt>
+        @Html.DisplayNameFor(model => model.Plate)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.Plate)
+    </dd>
+</h2>
 
 <div>
-    <h4>Cars</h4>
+    
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Plate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Plate)
-        </dd>
-		<dt>
-    @Html.DisplayNameFor(model => model.Review)
-</dt>
+        <div class="reviewIcons">
+            <p >
+                Driver has
+                @ViewData["awful"]  <img src="https://cdn4.iconfinder.com/data/icons/reaction/32/angry-512.png" alt="Bad Driver" height="35" width="35">  reviews,
+                @ViewData["bad"]  <img src="https://cdn4.iconfinder.com/data/icons/suck-it-and-see/32/emoji_emoticon_smiley_-06-512.png" alt="Meh Driver" height="35" width="35"> reviews ,
+                @ViewData["good"] <img src="https://images.vexels.com/media/users/3/134792/isolated/preview/11021ac040438214430837e55f4225b7-3d-smile-emoticon-emoji-by-vexels.png" alt="Good Driver" height="35" width="35"> reviews
+                and @ViewData["excellent"] <img src="https://cdn0.iconfinder.com/data/icons/emojis-colored-outlined-pixel-perfect/64/emoji-42-512.png" alt="Verry good Driver" height="35" width="35"> reviews
+            </p>
+        </div>
+		
 <dd>
     <table class="table">
         <tr>
@@ -35,7 +44,11 @@
                     @Html.DisplayFor(modelItem => item.Badge.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => type)
+
+                    @if(item.Badge.Type == 0){ <img src="https://cdn4.iconfinder.com/data/icons/reaction/32/angry-512.png" alt="Bad Driver" height="35" width="35"> }
+                    else if(item.Badge.Type == 1){<img src="https://cdn4.iconfinder.com/data/icons/suck-it-and-see/32/emoji_emoticon_smiley_-06-512.png" alt="Meh Driver" height="35" width="35">}
+                    else if(item.Badge.Type == 3){<img src="https://images.vexels.com/media/users/3/134792/isolated/preview/11021ac040438214430837e55f4225b7-3d-smile-emoticon-emoji-by-vexels.png" alt="Good Driver" height="35" width="35">}
+                    else{<img src="https://cdn0.iconfinder.com/data/icons/emojis-colored-outlined-pixel-perfect/64/emoji-42-512.png" alt="Verry good Driver" height="35" width="35">}
                 </td>
 				<td>
                     @Html.DisplayFor(modelItem => item.UserIp)
@@ -50,6 +63,5 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.LicenceId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-area="" asp-controller="Reviews" asp-action="Index">Back to List</a>
 </div>

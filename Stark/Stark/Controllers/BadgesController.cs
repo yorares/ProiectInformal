@@ -116,7 +116,7 @@ namespace Stark.Controllers
         }
 
         // GET: Badges/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false) //saveChangesError is passed by redirect from the POST Delete if exception is caught - Used to prompt the user in the view.
         {
             if (id == null)
             {
@@ -124,10 +124,16 @@ namespace Stark.Controllers
             }
 
             var badge = await _context.Badge
-                .FirstOrDefaultAsync(m => m.BadgeId == id);
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.BadgeId == id);
             if (badge == null)
             {
                 return NotFound();
+            }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] =
+                    "Delete failed. Please consider referential integrity when deleting records that contain foreign key constraints.";
             }
 
             return View(badge);
@@ -138,12 +144,24 @@ namespace Stark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var badge = await _context.Badge.FindAsync(id);
-            _context.Badge.Remove(badge);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var badge = await _context.Badge
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.BadgeId == id);
+            if (badge == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            try
+            {
+                _context.Badge.Remove(badge);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateException) //usually when deleting a record that triggers foreign key constraints
+            {
+                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
+            }
         }
-
         private bool BadgeExists(int id)
         {
             return _context.Badge.Any(e => e.BadgeId == id);

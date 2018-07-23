@@ -3,30 +3,38 @@
 
 @{
     ViewData["Title"] = "SelectPlate";
-    string[] ceva = new string[2] { "CJ25PUL","SJ24RUN" };
+  	var data=ViewBag.result;
+	
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <form asp-action="Create">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
+    <div class="form-group selectPlate">
         
         @{
             
-            for (int i = 0; i < ceva.GetLength(0); i++)
+            for (int i = 0; i < data.Count; i++)
             {
 
-                <input type="button" class="selectButtonBefore" id=@i value=@ceva[i]  />
+                <input type="button" class="selectButtonBefore" id=@i value=@data[i] />
             }
         }
-        <label asp-for="Plate" class="control-label"></label>
-        <input asp-for="Plate" hidden />
+        <input asp-for="Plate" class="form-control" id="Plate" />
         <span asp-validation-for="Plate" class="text-danger"></span>
     </div>
-    <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-default" />
-    </div>
+	@if((data.Count<1)||(data==null))
+    {
+	<p class="text-danger ErrorMessage">License plate text not generated. Try again with a clearer picture.</p>
+	}
+    else{<div class="form-group selectPlate">
+        <input type="submit" value="Create" formaction=@Url.Action("Create", "Cars") formmethod="post" class="btn btn-success" />
+    </div>}
+	
 </form>
+<script type="text/javascript">
+    if ($(".Plate").val() == null) {
 
 
-<h2>SelectPlate</h2>
+    }
+</script>
 

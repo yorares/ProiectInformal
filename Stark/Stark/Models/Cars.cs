@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Stark.Models
 {
@@ -11,6 +12,8 @@ namespace Stark.Models
         }
 
         public int LicenceId { get; set; }
+        [Required]
+        [StringLength(7, MinimumLength =6)]
         public string Plate { get; set; }
 
         public ICollection<Review> Review { get; set; }
