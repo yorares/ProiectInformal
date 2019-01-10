@@ -12232,11 +12232,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\noIMEnoPSP\\source\\repos\\Stark\\Stark\\Stark.csproj",
+      "projectUniqueName": "C:\\Users\\noIMEnoPSP\\Documents\\GitHub\\ProiectInformal\\Stark\\Stark\\Stark.csproj",
       "projectName": "Stark",
-      "projectPath": "C:\\Users\\noIMEnoPSP\\source\\repos\\Stark\\Stark\\Stark.csproj",
+      "projectPath": "C:\\Users\\noIMEnoPSP\\Documents\\GitHub\\ProiectInformal\\Stark\\Stark\\Stark.csproj",
       "packagesPath": "C:\\Users\\noIMEnoPSP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\noIMEnoPSP\\source\\repos\\Stark\\Stark\\obj\\",
+      "outputPath": "C:\\Users\\noIMEnoPSP\\Documents\\GitHub\\ProiectInformal\\Stark\\Stark\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

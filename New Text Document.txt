@@ -1,9 +1,0 @@
-Pentru prezentarea powerpoint sa aveti urmatoarele lucruri:
-- descrierea aplicatiei (pt cine nu stie ce este aplicatia)
-- functiile aplicatiei (de surprins punct cu punct ce stie sa faca aplicatia) cu descriere si screenshots
-- diagrama de entitati
-- idei de dezvoltare ulterioara
-Timp de prezentare - 5 minute
-Deadline pentru cod - luni, ora 16:00 (am nevoie de timp sa ma uit peste cod)
-Sa imi trimiteti pe email zip la adresa daniel.costea@ymail.com cu codul (sa stergeti inainte folderele obj si bin din arhiva, ca sa ocupe mai putin)
-Spor!
